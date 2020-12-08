@@ -1,17 +1,26 @@
 package com.galvanize.spring;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
-@RequestMapping("/math/calculate")
+@RequestMapping("/math")
 public class math {
-    @GetMapping
-    public String getOperation(
+    @GetMapping("/calculate")
+    public String math(
             MathOperations mathOperations
             ) {
         return mathOperations.toString();
     }
+    @PostMapping("/sum")
+    public String sum(@RequestParam int[] n) {
+        return MathOperations.getSumString(n);
+    }
+
+    @RequestMapping("/volume/{length}/{width}/{height}")
+    public String volume(@PathVariable Map<String, String> pathVariables) {
+        return MathOperations.getVolumeString(pathVariables);
+    }
+
 }
