@@ -22,7 +22,7 @@ public class MathTests {
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string("add 4 and 6 equals 10"));
+                .andExpect(content().string("add 4 and 6 equals 10.0"));
     }
 
     @Test
@@ -31,7 +31,7 @@ public class MathTests {
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string("multiply 4 and 6 equals 24"));
+                .andExpect(content().string("multiply 4 and 6 equals 24.0"));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class MathTests {
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string("subtract 4 and 6 equals -2"));
+                .andExpect(content().string("subtract 4 and 6 equals -2.0"));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class MathTests {
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string("divide 30 and 5 equals 6"));
+                .andExpect(content().string("divide 30 and 5 equals 6.0"));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class MathTests {
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string("add 30 and 5 equals 35"));
+                .andExpect(content().string("add 30 and 5 equals 35.0"));
     }
 
     @Test
@@ -67,7 +67,7 @@ public class MathTests {
 
         this.mvc.perform(request)
                 .andExpect(status().isOk())
-                .andExpect(content().string("4 + 5 + 6 = 15"));
+                .andExpect(content().string("4.0 + 5.0 + 6.0 = 15.0"));
     }
 
     @Test
@@ -86,5 +86,21 @@ public class MathTests {
         this.mvc.perform(request)
                 .andExpect(status().isOk())
                 .andExpect(content().string("The volume of a 6x7x8 rectangle is 336"));
+    }
+    @Test
+    public void calculateCanFindAreaWidthHeight() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=area&height=4&width=4");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("The area of a square with a width of 4 and height of 4 equals 16.0"));
+    }
+    @Test
+    public void calculateCanFindAreaOfCircle() throws Exception {
+        RequestBuilder request = MockMvcRequestBuilders.get("/math/calculate?operation=area&radius=4");
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("The area of a circle pi 4^2 equals 50.26548245743669"));
     }
 }

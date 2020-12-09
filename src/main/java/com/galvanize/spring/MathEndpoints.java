@@ -14,13 +14,20 @@ public class MathEndpoints {
         return mathOperations.toString();
     }
     @PostMapping("/sum")
-    public String sum(@RequestParam int[] n) {
+    public String sum(@RequestParam double[] n) {
         return MathOperations.getSumString(n);
     }
 
     @RequestMapping("/volume/{length}/{width}/{height}")
     public String volume(@PathVariable Map<String, String> pathVariables) {
         return MathOperations.getVolumeString(pathVariables);
+    }
+
+    @RequestMapping("/area")
+    public String area (
+            MathOperations mathOperations
+    ){
+        return mathOperations.toString();
     }
 
 }
