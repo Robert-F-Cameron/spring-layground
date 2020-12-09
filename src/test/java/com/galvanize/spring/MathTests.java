@@ -10,8 +10,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(math.class)
-public class WebMVCTest {
+@WebMvcTest(MathEndpoints.class)
+public class MathTests {
     @Autowired
     MockMvc mvc;
 

@@ -6,7 +6,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/math")
-public class math {
+public class MathEndpoints {
     @GetMapping("/calculate")
     public String math(
             MathOperations mathOperations
